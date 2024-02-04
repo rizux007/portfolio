@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+</head>
+<body>
+    <input type="text" id="input">
+    <button onclick="speakText()">Parler</button>
+
+    <script>
+        function speakText() {
+            const input = document.querySelector('#input');
+            const textToSpeak = input.value;
+
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(textToSpeak);
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('La synthèse vocale n\'est pas prise en charge par votre navigateur.');
+            }
+        }
+    </script>
+</body>
+</html>
